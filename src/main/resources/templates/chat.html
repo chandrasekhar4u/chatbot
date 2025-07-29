@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Bot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/css/chat.css}" rel="stylesheet"/>
+</head>
+<body>
+<div id="chatWidget" class="chat-widget">
+    <div class="chat-header">
+        <span class="chat-title">chat bot</span>
+        <div class="chat-actions">
+            <button id="settingsBtn" title="Settings">&#9881;</button>
+            <button id="minimizeBtn" title="Minimize">&#8211;</button>
+            <button id="clearChatBtn" title="Clear Chat">🧹</button>
+        </div>
+    </div>
+    <div id="chatBody" class="chat-body">
+        <div id="messages" class="messages"></div>
+        <div id="quickReplies" class="quick-replies">
+            <button th:each="prompt : ${botPrompts}"
+                    th:text="${prompt}"
+                    class="quick-reply-btn"
+                    type="button"
+                    th:title="${prompt}"></button>
+        </div>
+    </div>
+    <form id="chatForm" class="chat-form">
+        <input id="messageInput" type="text" placeholder="Type your message..." autocomplete="off"/>
+        <button type="submit" id="sendBtn">Send</button>
+    </form>
+</div>
+<div id="settingsModal" class="modal">
+    <div class="modal-content">
+        <span id="closeSettings" class="close">&times;</span>
+        <h2>Chat Settings</h2>
+        <label>Width (%): <input id="chatWidth" type="number" min="50" max="100" value="100"></label>
+        <label>Height (%): <input id="chatHeight" type="number" min="50" max="100" value="95"></label>
+        <button id="applySettings">Apply</button>
+    </div>
+</div>
+<script th:src="@{/js/chat.js}"></script>
+</body>
+</html>
