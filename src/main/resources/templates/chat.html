@@ -9,21 +9,20 @@
 <body>
 <div id="chatWidget" class="chat-widget">
     <div class="chat-header">
-        <span class="chat-title">chat bot</span>
+        <span class="chat-title">AI Assistant</span>
         <div class="chat-actions">
-            <button id="settingsBtn" title="Settings">&#9881;</button>
-            <button id="minimizeBtn" title="Minimize">&#8211;</button>
-            <button id="clearChatBtn" title="Clear Chat">🧹</button>
+            <button id="settingsBtn" class="action-btn" title="Settings">⚙️</button>
+            <button id="clearChatBtn" class="action-btn" title="Clear Chat">🗑️</button>
+            <button id="minimizeBtn" class="action-btn" title="Minimize">−</button>
         </div>
     </div>
     <div id="chatBody" class="chat-body">
         <div id="messages" class="messages"></div>
         <div id="quickReplies" class="quick-replies">
-            <button th:each="prompt : ${botPrompts}"
-                    th:text="${prompt}"
-                    class="quick-reply-btn"
-                    type="button"
-                    th:title="${prompt}"></button>
+            <button class="quick-reply-btn" data-prompt="Hello! How can I help you today?">👋 Say Hello</button>
+            <button class="quick-reply-btn" data-prompt="What services do you offer?">🛍️ Services</button>
+            <button class="quick-reply-btn" data-prompt="I need help with my order">📦 Order Help</button>
+            <button class="quick-reply-btn" data-prompt="Tell me about pricing">💰 Pricing</button>
         </div>
     </div>
     <form id="chatForm" class="chat-form">
@@ -31,15 +30,58 @@
         <button type="submit" id="sendBtn">Send</button>
     </form>
 </div>
+
 <div id="settingsModal" class="modal">
     <div class="modal-content">
-        <span id="closeSettings" class="close">&times;</span>
-        <h2>Chat Settings</h2>
-        <label>Width (%): <input id="chatWidth" type="number" min="50" max="100" value="100"></label>
-        <label>Height (%): <input id="chatHeight" type="number" min="50" max="100" value="95"></label>
-        <button id="applySettings">Apply</button>
+        <div class="modal-header">
+            <h3 class="modal-title">Chat Settings</h3>
+            <button id="closeSettings" class="close-btn" type="button">×</button>
+        </div>
+
+        <div class="modal-body">
+            <div class="settings-grid">
+                <div class="setting-group">
+                    <label class="setting-label">
+                        <span class="label-text">Width</span>
+                        <span class="label-unit" id="widthValue">100%</span>
+                    </label>
+                    <div class="input-wrapper">
+                        <input type="range" id="chatWidth" class="range-input" min="50" max="100" value="100" step="5">
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <label class="setting-label">
+                        <span class="label-text">Height</span>
+                        <span class="label-unit" id="heightValue">95%</span>
+                    </label>
+                    <div class="input-wrapper">
+                        <input type="range" id="chatHeight" class="range-input" min="50" max="100" value="95" step="5">
+                    </div>
+                </div>
+
+                <div class="setting-group full-width">
+                    <label class="setting-label">
+                        <span class="label-text">System Prompt</span>
+                        <span class="label-description">Custom instructions for the AI</span>
+                    </label>
+                    <textarea id="systemPrompt" class="textarea-input"
+                              placeholder="Enter custom instructions for the chatbot..."
+                              rows="4" maxlength="500"></textarea>
+                    <div class="character-count">
+                        <span id="promptCharCount">0</span>/500 characters
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button id="resetSettings" class="btn btn-secondary" type="button">Reset</button>
+            <button id="applySettings" class="btn btn-primary" type="button">Apply Settings</button>
+        </div>
     </div>
 </div>
+
 <script th:src="@{/js/chat.js}"></script>
 </body>
 </html>

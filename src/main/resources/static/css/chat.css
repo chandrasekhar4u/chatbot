@@ -25,7 +25,6 @@ body {
     background: #DB2525;
     color: #fff;
     padding: 1rem 2rem;
-    font-size: 1.5rem;
     font-weight: 600;
 }
 
@@ -240,4 +239,222 @@ body {
     opacity: 0.8;
     font-style: italic;
     color: #484848;
+}
+
+/* Modern Settings Modal Styles */
+.modal {
+    backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 24px 16px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.modal-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+    background-color: #f8f9fa;
+    color: #dc3545;
+}
+
+.modal-body {
+    padding: 24px;
+    overflow-y: auto;
+}
+
+.settings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.setting-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.setting-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.setting-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    color: #495057;
+    font-size: 0.9rem;
+}
+
+.label-text {
+    font-weight: 600;
+}
+
+.label-unit {
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+.label-description {
+    font-size: 0.8rem;
+    color: #6c757d;
+    font-style: italic;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.range-input {
+    flex: 1;
+    height: 6px;
+    background: #e9ecef;
+    border-radius: 3px;
+    outline: none;
+    appearance: none;
+}
+
+.range-input::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 123, 255, 0.3);
+    transition: all 0.2s ease;
+}
+
+.range-input::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+}
+
+.range-value {
+    min-width: 45px;
+    text-align: center;
+    font-weight: 600;
+    color: #007bff;
+    font-size: 0.9rem;
+    background: #f8f9fa;
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+}
+
+.textarea-input {
+    width: 100%;
+    min-height: 100px;
+    padding: 12px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    resize: vertical;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.textarea-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.character-count {
+    text-align: right;
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-top: 4px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 24px 24px;
+    border-top: 1px solid #e9ecef;
+    background: #f8f9fa;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
+    box-shadow: 0 2px 6px rgba(0, 123, 255, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+    transform: translateY(-1px);
+}
+
+@media (max-width: 600px) {
+    .settings-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .modal-footer {
+        flex-direction: column;
+        gap: 12px;
+    }
 }
